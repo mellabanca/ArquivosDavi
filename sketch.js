@@ -1,4 +1,5 @@
 var mousevivo, mouse;
+var mouse1, mouse2, mouse3, mouse4;
 
 function setup() {
   createCanvas(800,400);
@@ -10,6 +11,15 @@ function setup() {
   mousevivo.debug = true;
   console.log(mouse.width/2);
   console.log(mousevivo.width/2);
+
+  mouse1 = createSprite(100,100,50,50);
+  mouse1.shapeColor = "green";
+  mouse2 = createSprite(200,100,50,50);
+  mouse2.shapeColor = "green";
+  mouse3 = createSprite(300,100,50,50);
+  mouse3.shapeColor = "green";
+  mouse4 = createSprite(400,100,50,50);
+  mouse4.shapeColor = "green";
 }
 
 function draw() {
@@ -17,13 +27,25 @@ function draw() {
   mousevivo.x = World.mouseX;
   mousevivo.y = World.mouseY; 
 
-  if(mousevivo.x - mouse.x < mouse.width/2 + mousevivo.width/2){
-    mouse.shapeColor = "red";
-    mousevivo.shapeColor = "red";
-  } else {
-    mouse.shapeColor = "green";
-    mousevivo.shapeColor = "green";
-  }
+ if(isTouching(mouse3, mousevivo)){
+   mousevivo.shapeColor = "yellow";
+   mouse3.shapeColor = "yellow";
+ }
+ else{
+   mousevivo.shapeColor = "green";
+   mouse3.shapeColor = "green";
+ }
 
   drawSprites();
+}
+
+function isTouching(obj1, obj2){
+  if( obj1.x - obj2.x < obj2.width/2 + obj1.width/2                                                                                   
+    &&obj2.x - obj1.x < obj2.width/2 + obj1.width/2  
+    &&obj1.y - obj2.y < obj2.height/2 + obj1.height/2                                                                                   
+    &&obj2.y - obj1.y < obj2.height/2 + obj1.height/2  ){
+    return true;
+  } else {
+    return false;
+  }
 }
