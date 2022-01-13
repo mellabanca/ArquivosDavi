@@ -7,6 +7,11 @@ var box1, box2, ground, box3, box4, box5;
 var pig1, pig2;
 var log1, log2, log3, log4;
 var bird;
+var imagemfundo;
+function preload(){
+imagemfundo= loadImage("sprites/bg.png");
+}
+
 function setup(){
     var canvas = createCanvas(1200,400);
     engine = Engine.create();
@@ -32,7 +37,7 @@ bird = new Bird(100,100);
 }
 
 function draw(){
-    background(0);
+    background(imagemfundo);
     Engine.update(engine);
     box1.display();
     box2.display();
