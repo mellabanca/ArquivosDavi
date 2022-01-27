@@ -22,7 +22,22 @@ image(this.estilingue2, 173, 20);
 if(this.estilingue.bodyA){
 var pontoA=this.estilingue.bodyA.position;
 var pontoB=this.pointB;
-strokeWeight(4);
+push();
+
+stroke(84,39,15);
+if(pontoA.x<220){
+strokeWeight(7);
+line(pontoA.x-20,pontoA.y,pontoB.x-10,pontoB.y);
+line(pontoA.x-20,pontoA.y,pontoB.x+30,pontoB.y-3);
+image(this.estilingue3,pontoA.x-30,pontoA.y-10,15,30);
+}else{
+strokeWeight(3);    
+line(pontoA.x+25,pontoA.y,pontoB.x-10,pontoB.y);
+line(pontoA.x+25,pontoA.y,pontoB.x+30,pontoB.y-3);
+image(this.estilingue3,pontoA.x+25,pontoA.y-10,15,30);
+}
+
+pop();
 //line(pontoA.x,pontoA.y,pontoB.x,pontoB.y);
 }
 
