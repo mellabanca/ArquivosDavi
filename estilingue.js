@@ -16,6 +16,9 @@ World.add(world,this.estilingue);
 fly(){
 this.estilingue.bodyA=null;    
 }
+anexar(bodyA){
+this.estilingue.bodyA=bodyA;
+}
 display(){
 image(this.estilingue1, 200, 20);
 image(this.estilingue2, 173, 20);
