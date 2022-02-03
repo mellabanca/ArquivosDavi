@@ -11,7 +11,7 @@ var bird;
 var imagemfundo;
 var plataforma;
 var estilingue;
-
+var gamestate="noestilingue";
 function preload(){
 imagemfundo= loadImage("sprites/bg.png");
 }
@@ -43,7 +43,7 @@ plataforma = new Ground(150,305,300,170);
 
 estilingue= new Estilingue(bird.body,{x:200,y:50});
 
-ExemplosTiposdeDados();
+//ExemplosTiposdeDados();
 }
 
 function draw(){
@@ -67,16 +67,32 @@ estilingue.display();
 }
 
 function mouseDragged(){
-Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY});    
+if (gamestate!=="voando"){
+Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY});   
+}    
+  
 }
 function mouseReleased(){
 estilingue.fly();
+gamestate="voando";
 }
 function keyPressed(){
 if(keyCode===32){
-estilingue.anexar(bird.body);    
+//estilingue.anexar(bird.body);    
 }    
 }
+
+async function getTime(){
+    var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Tokyo");
+    var responseJSON = await response.json();
+    var datetime = responseJSON.datetime;
+    var hora = datetime.slice(11,13);
+    console.log(hora);
+}
+
+
+
+
 
 function ExemplosTiposdeDados(){
     //Exemplos de tipos diferentes de dados em Javascript
