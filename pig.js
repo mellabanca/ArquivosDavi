@@ -18,4 +18,11 @@
       pop();
     }
    }
+   scores(){
+    if(this.visible<0&&this.visible>-1005){
+      scores++;  
+      }  
+   }
+     
+   
   }
